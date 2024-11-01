@@ -35,6 +35,11 @@ class Migration(migrations.Migration):
                 ('quantidade_total', models.IntegerField()),
                 ('quantidade_disponivel', models.IntegerField()),
                 ('descricao', models.CharField(max_length=100)),
+                ('emprestado', models.BooleanField(default=False)),
+                ('nome_emprestado', models.CharField(max_length=100)),
+                ('data_emprestado', models.DateTimeField()),
+                ('data_devolucao', models.DateTimeField()),
+                ('tempo_duracao', models.DateField()),
             ],
         ),
     ]
