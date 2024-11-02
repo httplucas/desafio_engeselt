@@ -27,8 +27,8 @@ class Livros(models.Model):
     class Meta:
         verbose_name = 'Livros'
 
-    def __str__(self):
-        return self.nome
+    def __str__(self): #Aparecer o titulo dos livros no banco
+        return self.nome 
    
 
 
