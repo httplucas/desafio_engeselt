@@ -4,12 +4,42 @@
 {% block body %} 
     <div class="container">
         <br>
+        {% if status == '0'%}
+        <div class="alert alert-primary" role="alert">
+        Cadastro realizado com sucesso!
+        </div>
+        {% endif %}
+
+        {% if status == '1'%}
+        <div class="alert alert-danger" role="alert">
+        Usuario ja existe no Sistema
+        </div>
+        {% endif %}
+
+        {% if status == '2'%}
+        <div class="alert alert-danger" role="alert">
+        Nome e email não podem estar vazios
+        </div>
+        {% endif %}
+
+        {% if status == '3'%}
+        <div class="alert alert-danger" role="alert">
+        As senhas não coicidem
+        </div>
+        {% endif %}
+
+        {% if status == '4'%}
+        <div class="alert alert-danger" role="alert">
+        Erro interno do sistema
+        </div>
+        {% endif %}
+
         <div class="row">
             <div class="col-md-3">
 
         </div>
         <div class="col-md">
-            <h1>Cadastre-se</h1>
+            <h1>Cadastre o Usuario</h1>
             <hr>
             <form method="POST" action="{%url 'valida_cadastro'%}"> {% csrf_token %}
 
@@ -28,18 +58,18 @@
                 <label for="">Endereço(Opcional):</label>
                 <input name="endereco" class="form-control" type="text" placeholder="Endereço:..."> 
                 <br>
-               <label for="">Qual o tipo de usuario?</label>
-               <select name="dropdown" id="">
-                <option value="adm">Administrador</option>
-                <option value="leitor">Leitor</option>
-                
 
+               <label for="">Qual o tipo de usuario?</label>
+               <select name="tipo_usuario" id="tipo_usuario">
+                <option value="Administrador">Administrador</option>
+                <option value="Leitor">Leitor</option>
                </select>
                 
-               
                <br>
                <br>
                 <input  class="btn btn-primary"  type="submit" value="Enviar">
+                <a href="{%url 'login' %}" class="btn btn-warning">Login</a>
+            
             </form>
         </div>
         
