@@ -1,0 +1,57 @@
+{% extends 'base_adm.html' %}
+{% block titulo %}Cadastro de Livros{% endblock %}
+
+{% block body %} 
+<br>
+        <div class="row">
+            <div class="col-md-3">
+
+        </div>
+        <div class="col-md-4">
+            <h1>Cadastre o Livro</h1>
+            <hr>
+            <form method="POST" action="{%url 'valida_cadastro'%}">
+
+                <label for="">Nome do livro:</label>
+                <input name="nome_livro" class="form-control" type="text" placeholder="Nome do Livro...">
+             
+                <label for="">Autor:</label>
+                <input name="autor_livro" class="form-control" type="text" placeholder="Autor do Livro...">
+               
+                <label  for="">ISBN:</label>
+                <input name="isbn_livro" class="form-control "type="text" placeholder="ISBN...">
+                
+                <label for="">Editora:</label>
+                <input name="editora_livro" class="form-control" type="tel" placeholder="Editora...">
+               
+                <label for="">Ano de Publicação:</label>
+                <input name="ano_livro" class="form-control" type="date" placeholder="Endereço:..."> 
+                
+                <label for="">Quantidade total:</label>
+                <input name="quantidade_total" class="form-control" type="number" placeholder="Quantidade total:..."> 
+                
+                <label for="">Quantidade Disponivel:</label>
+                <input name="quantidade_disponivel" class="form-control" type="number" placeholder="Quantidade Disponivel:..."> 
+               
+                <label for="">Descrição(Opcional):</label>
+                <input name="descricao" class="form-control" type="text" placeholder="Descrição:..."> 
+               
+               <label for="">Selecione o Gênero:</label>
+               <select  class = 'form-control' name="genero_livro" id="genero_livro">
+                <option value="ficcao">Ficção</option>
+                <option value="aventura">Aventura</option>
+                <option value="acao">Ação</option>
+                <option value="romance">Romance</option>
+                <option value="documentacao">Documentação</option>
+               </select>
+                
+               <br>
+               <br>
+                <input  class="btn btn-primary" type="submit" value="Enviar">
+            
+            </form>
+        </div>
+        
+        </div>
+    </div>
+{% endblock %}

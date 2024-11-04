@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 def home_admin(request):
     if request.session.get('usuario_adm'):
-        return HttpResponse ('admin')
+        return render (request,'home_adm.html')
     else: 
         return redirect('/auth/login/?status=2')
 
@@ -12,3 +12,6 @@ def home_leitor(request):
         return HttpResponse ('leitor')
     else: 
         return redirect('/auth/login/?status=2')
+    
+def cadastrar_livros (request):
+   return render (request,'cadastrar_livros.html')
