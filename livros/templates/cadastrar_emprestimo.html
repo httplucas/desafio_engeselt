@@ -1,42 +1,16 @@
 {% extends 'base_adm.html' %}
-{% block titulo %}Cadastro{% endblock %}
+{% block titulo %}Cadastro de emprestimo{% endblock %}
 
 {% block body %} 
-    <div class="container">
-        <br>
-        {% comment %} validação {% endcomment %}
-        {% if status == '0'%}
-        <div class="alert alert-primary" role="alert">
-        Cadastro realizado com sucesso!
-        </div>
-        {% endif %}
 
-        {% if status == '1'%}
-        <div class="alert alert-danger" role="alert">
-        Usuario ja existe no Sistema
-        </div>
-        {% endif %}
-
-        {% if status == '2'%}
-        <div class="alert alert-danger" role="alert">
-        Nome e email não podem estar vazios
-        </div>
-        {% endif %}
-
-        {% if status == '3'%}
-        <div class="alert alert-danger" role="alert">
-        As senhas não coicidem
-        </div>
-        {% endif %}
-        {% comment %} Fim da validação {% endcomment %}
         <div class="row">
             <div class="col-md-3">
 
         </div>
         <div class="col-md">
-            <h1>Cadastre o Usuario</h1>
+            <h1>Cadastre o Emprestimo</h1>
             <hr>
-            <form method="POST" action="{%url 'valida_cadastro'%}"> {% csrf_token %}
+            <form method="POST" action="{%url 'cadastrar_emprestimo'%}"> {% csrf_token %}
 
                 <label for="">Nome:</label>
                 <input name="nome" class="form-control" type="text" placeholder="Nome...">

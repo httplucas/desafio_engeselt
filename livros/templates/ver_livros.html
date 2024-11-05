@@ -29,9 +29,6 @@
       {% endif %}
       <br>
       <br>
-      <button class="btn btn-warning">Ver Historico de Emprestimos</button>
-      <br>
-      <br>
 
       <!-- #livroemprestado -->
       {% if livros.emprestado %} 
@@ -45,4 +42,30 @@
       <a href='{% url "home/admin" %}'class="btn btn-primary">Voltar</a>
     </div>
   </div>
+
+  <h2>Historico de Emprestimo</h2>
+{% for i in emprestimos %}
+  <table class="table">
+    <thead>
+      
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Data do emprestimo</th>
+        <th scope="col">Data de devolução</th>
+        <th scope="col">Tempo de Duração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.nome_emprestado}}</td>
+        <td>{{i.data_emprestado}}</td>
+        <td>{{i.data_devolucao}}</td>
+        <td>{{i.temp_duracao}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  {% endfor %}
 {% endblock  %}

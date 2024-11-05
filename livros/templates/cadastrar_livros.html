@@ -3,6 +3,7 @@
 
 {% block body %} 
 <br>
+   
         <div class="row">
             <div class="col-md-3">
 
@@ -28,7 +29,7 @@
                 <input name="ano_publicacao" class="form-control" type="number" placeholder="Ano da Publicação:..."> 
                 
                
-                <label for="">Descrição(Opcional):</label>
+                <label for="">Descrição::</label>
                 <input name="descricao" class="form-control" type="text" placeholder="Descrição:..."> 
                
                <label for="">Selecione o Gênero:</label>
@@ -39,7 +40,12 @@
                 <option value="Romance">Romance</option>
                 <option value="Documentação">Documentação</option>
                </select>
-                
+               
+               <label for="">Quantidade Total:</label>
+               <input name="quantidade_total" class="form-control" type="text" placeholder="Quantidade total:...">
+
+               <label for="">Quantidade Disponivel:</label>
+               <input name="quantidade_disponivel" class="form-control" type="text" placeholder="Quantidade Disponivel:...">  
                <br>
                <br>
                 <input  class="btn btn-primary" type="submit" value="Enviar">
