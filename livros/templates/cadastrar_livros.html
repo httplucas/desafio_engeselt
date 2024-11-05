@@ -10,39 +10,34 @@
         <div class="col-md-4">
             <h1>Cadastre o Livro</h1>
             <hr>
-            <form method="POST" action="{%url 'valida_cadastro'%}">
+            <form method="POST" action="{%url 'validar_livros'%}"> {% csrf_token %}
 
                 <label for="">Nome do livro:</label>
-                <input name="nome_livro" class="form-control" type="text" placeholder="Nome do Livro...">
+                <input name="nome" class="form-control" type="text" placeholder="Nome do Livro...">
              
                 <label for="">Autor:</label>
-                <input name="autor_livro" class="form-control" type="text" placeholder="Autor do Livro...">
+                <input name="autor" class="form-control" type="text" placeholder="Autor do Livro...">
                
                 <label  for="">ISBN:</label>
-                <input name="isbn_livro" class="form-control "type="text" placeholder="ISBN...">
+                <input name="isbn" class="form-control "type="text" placeholder="ISBN...">
                 
                 <label for="">Editora:</label>
-                <input name="editora_livro" class="form-control" type="tel" placeholder="Editora...">
+                <input name="editora" class="form-control" type="tel" placeholder="Editora...">
                
                 <label for="">Ano de Publicação:</label>
-                <input name="ano_livro" class="form-control" type="date" placeholder="Endereço:..."> 
+                <input name="ano_publicacao" class="form-control" type="number" placeholder="Ano da Publicação:..."> 
                 
-                <label for="">Quantidade total:</label>
-                <input name="quantidade_total" class="form-control" type="number" placeholder="Quantidade total:..."> 
-                
-                <label for="">Quantidade Disponivel:</label>
-                <input name="quantidade_disponivel" class="form-control" type="number" placeholder="Quantidade Disponivel:..."> 
                
                 <label for="">Descrição(Opcional):</label>
                 <input name="descricao" class="form-control" type="text" placeholder="Descrição:..."> 
                
                <label for="">Selecione o Gênero:</label>
-               <select  class = 'form-control' name="genero_livro" id="genero_livro">
-                <option value="ficcao">Ficção</option>
-                <option value="aventura">Aventura</option>
-                <option value="acao">Ação</option>
-                <option value="romance">Romance</option>
-                <option value="documentacao">Documentação</option>
+               <select  class = 'form-control' name="genero" id="genero">
+                <option value="Ficção">Ficção</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Ação">Ação</option>
+                <option value="Romance">Romance</option>
+                <option value="Documentação">Documentação</option>
                </select>
                 
                <br>

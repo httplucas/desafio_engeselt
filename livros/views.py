@@ -1,9 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from .models import Livros
+
 
 def home_admin(request):
     if request.session.get('usuario_adm'):
-        return render (request,'home_adm.html')
+        livros_adm = Livros.objects.all()
+        return render (request,'home_adm.html', {'livros_cadastrados':livros_adm})
     else: 
         return redirect('/auth/login/?status=2')
 
@@ -15,3 +18,34 @@ def home_leitor(request):
     
 def cadastrar_livros (request):
    return render (request,'cadastrar_livros.html')
+
+def ver_livros (request, id):
+   livros = Livros.objects.get(id=id)
+   return render (request,'ver_livros.html',{'livros':livros})
+
+def home_leitor(request):
+    if request.session.get('usuario_leitor'):
+        livros_leitor = Livros.objects.all()
+        return render (request,'home_leitor.html', {'livros_cadastrados':livros_leitor})
+
+def ver_livros_leitor (request, id):
+   livros = Livros.objects.get(id=id)
+   return render (request,'ver_livros_leitor.html',{'livros':livros})
+
+def validar_livros(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        autor = request.POST.get('autor')
+        isbn = request.POST.get('isbn')
+        editora = request.POST.get('editora')
+        ano_publicacao = request.POST.get('ano_publicacao')
+        genero = request.POST.get('genero')
+
+        livros_cadastro = Livros(nome=nome,autor=autor,isbn=isbn,editora=editora,ano_publicacao=ano_publicacao,genero=genero)
+        livros_cadastro.save()
+        return redirect('/livros/home/admin')  
+    
+def deletar_livro(request,id):
+    livro = Livros.objects.get(id=id)
+    livro.delete()
+    return redirect('home/admin')  

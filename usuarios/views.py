@@ -67,3 +67,7 @@ def valida_login(request):
 def sair(request):
     request.session.flush()
     return redirect('/auth/login')
+
+def listar_usuarios(request):
+    usuarios = Usuario.objects.all()
+    return render (request,'listar_usuarios.html',{'usuarios':usuarios})

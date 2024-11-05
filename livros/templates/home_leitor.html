@@ -1,10 +1,10 @@
-{% extends 'usuario_logado.html' %}
-{% block titulo %}Biblioteca{% endblock %}
+{% extends "usuario_leitor.html" %}
 
 {% block body %}
 <div class="container">
     <div class="row">
         {% for livros in livros_cadastrados%}
+        {% if livros.emprestado == False %}
         <div class="col-md">
             <br>
             <br>
@@ -12,33 +12,37 @@
                 <div style='text-align: center' class="card-body">
                   <h5 class="card-title">{{livros.nome}}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{livros.autor}}</h6>
+                  <!-- <p class="card-text">{{livros.descricao}}</p> -->
+                  <!-- <p class="card-text">Data Cadastro: {{livros.data_cadastro}}</p> -->
                     <p class="card-text">ISBN: {{livros.isbn}}</p>
-
+                   <!-- card -->
+                    
+                    <!-- card -->
                  {% if livros.emprestado %}
                  Livro emprestado
                  <svg style= 'color:green' xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
                     <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
                   </svg>
                  {% else %}
-                 Livro  não emprestado
-                 <svg style= 'color:red' xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                 Livro Disponivel
+                 <svg style= 'color:green' xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
                   </svg>
                  {% endif %}
                  <br>
                  <br>
-                  <a href="{% url 'ver_livros' livros.id %}" class="btn btn-primary">Ver livro</a>
-                  
-                  
+                  <a href="{% url 'ver_livros_leitor' livros.id %}" class="btn btn-primary">Ver livro</a>
+                  <br>
+               
                   
                 </div>
-                <a href="{% url 'deletar_livro' livros.id %}" class="btn btn-danger">Deletar Livro</a>
+                <a href="{% url 'ver_livros_leitor' livros.id %}" class="btn btn-danger">Solicitar Emprestimo</a>
               </div>
         </div>
+        {% endif %}
+        
         {% endfor %}
     </div>
 </div>
-
-
 
 {% endblock  %}
