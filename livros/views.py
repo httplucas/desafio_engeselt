@@ -10,8 +10,8 @@ from django.urls import reverse
 def home_admin(request):
     if request.session.get('usuario_adm'):
         livros_adm = Livros.objects.all()
-        usuario = Usuario.objects.all()
-        return render (request,'home_adm.html', {'livros_cadastrados':livros_adm, 'usuario':usuario})
+        usuarios = Usuario.objects.all()
+        return render (request,'home_adm.html', {'livros_cadastrados':livros_adm, 'usuarios':usuarios})
         
     else: 
         return redirect('/auth/login/?status=2')
@@ -61,4 +61,7 @@ def deletar_livro(request,id):
     return redirect('home/admin')  
 
 def cadastrar_emprestimo(request):
-    pass
+    usuarios = Usuario.objects.all()
+    livros = Livros.objects.all()
+    emprestimo = Emprestimo.objects.all() 
+    return render (request,'cadastrar_emprestimo.html', {'usuarios':usuarios, 'livros':livros,'emprestimo':emprestimo})
